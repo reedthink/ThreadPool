@@ -1,4 +1,8 @@
 ## 以这个代码为例 https://github.com/progschj/ThreadPool
+
+## 实现思路：
+线程池中持有线程和任务队列，使用线程和锁的模型。初始化的时候创建一些线程，之后推入一些任务，每次推入后通过条件变量触发某个阻塞的线程执行。线程池析构的时候`Unblocks all threads currently waiting for *this.`。 线程和任务队列的关系是每个线程都会从任务队列读取没被执行的任务，然后执行。
+
 ## 数据结构:
 ```cpp
 private:
