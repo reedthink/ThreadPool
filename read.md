@@ -105,4 +105,4 @@ auto ThreadPool::enqueue(F&& f, Args&&... args)
 
     1. 首先明确`task`是什么类型？是`shared_ptr`, 指向对象是函数。
     2. 因为加入`tasks`的元素`function<void()`，所以必须用匿名函数包一层（`lambda`实际是`class`, 符合[`function<void()`的要求](https://zh.cppreference.com/w/cpp/utility/functional/function)）
-4. 通知某个线程运行
+4. 解除某个被阻塞线程的阻塞
